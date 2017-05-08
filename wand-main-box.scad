@@ -1,8 +1,10 @@
 $fn=50;
 
 wallThickness = 2;
-tubeDiameter = 35.0;
-ledHoleDiameter = 6.0;
+tubeDiameter = 34.5;
+ledHoleDiameter = 6.5;
+switchHoleDiameter = 6.5;
+screwHole = 3.0;
 
 wand_main_box();
 //front_part();
@@ -38,9 +40,9 @@ module wand_main_box() {
         translate([54,16,62])
         rotate([-atan(35/45)+90,0,0])
         union() {
-            cylinder(d=6,h=10);
+            cylinder(d=switchHoleDiameter,h=10);
             translate([0,15,0])
-            cylinder(d=6,h=10);
+            cylinder(d=switchHoleDiameter,h=10);
         }
         
         // top tube cutout
@@ -69,41 +71,27 @@ module wand_main_box() {
         
         // top knob screw hole
         translate([12,65,87])
-        cylinder(d=3,h=6);
+        cylinder(d=screwHole,h=6);
         
         // clippard valve screw holes
         translate([75,87,70])
         rotate([90,0,0])
-        cylinder(d=3,h=6);
+        cylinder(d=screwHole,h=6);
         translate([75-43,87,70])
         rotate([90,0,0])
-        cylinder(d=3,h=6);
+        cylinder(d=screwHole,h=6);
 
         // back knob screw hole
         translate([13,104,77])
         rotate([90,0,0])
-        cylinder(d=3,h=26);
+        cylinder(d=screwHole,h=26);
     
         // back led cutout
         translate([13,112,46])
         cylinder(d=ledHoleDiameter,h=6);
     }
-    
-    // back knob
-    //translate([13,103,77]) back_knob();
 }
 
-// tODO knurl
-module back_knob() {
-    difference() {
-        rotate([90,0,0])
-        cylinder(d=16,h=18);    
-        
-        translate([0,1,0])
-        rotate([90,0,0])
-        cylinder(d=3,h=26);
-    }
-}
 
 module vent() {
     hull() {
