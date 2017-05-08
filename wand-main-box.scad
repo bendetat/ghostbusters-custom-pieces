@@ -1,10 +1,12 @@
 $fn=50;
 
 wallThickness = 2;
+tubeDiameter = 35.0;
+ledHoleDiameter = 6.0;
 
-//wand_main_box();
+wand_main_box();
 //front_part();
-back_part();
+//back_part();
 
 module back_part() {
     translate([0,-85,0])
@@ -30,9 +32,9 @@ module wand_main_box() {
         // bar cutout
         translate([64,5,57])
         rotate([-atan(35/45),0,0])
-        cube([10,15,25.42]);
+        cube([11,15,26]);
         
-        // front screw cutouts
+        // front switch cutouts
         translate([54,16,62])
         rotate([-atan(35/45)+90,0,0])
         union() {
@@ -44,12 +46,12 @@ module wand_main_box() {
         // top tube cutout
         translate([20,-1,70])
         rotate([270,0,0])
-        cylinder(d=33.5,h=40);
+        cylinder(d=tubeDiameter,h=40);
         
         // bottom tube cutout
         translate([60,80,20])
         rotate([270,0,0])
-        cylinder(d=33.5,h=50);
+        cylinder(d=tubeDiameter,h=50);
         
         // vent cutouts
         translate([25,49,87])
@@ -61,9 +63,9 @@ module wand_main_box() {
 
         // top led cutouts
         translate([65,44,87])
-        cylinder(d=5,h=6);    
+        cylinder(d=ledHoleDiameter,h=6);    
         translate([65,59,87])
-        cylinder(d=5,h=6);
+        cylinder(d=ledHoleDiameter,h=6);
         
         // top knob screw hole
         translate([12,65,87])
@@ -84,7 +86,7 @@ module wand_main_box() {
     
         // back led cutout
         translate([13,112,46])
-        cylinder(d=5,h=6);
+        cylinder(d=ledHoleDiameter,h=6);
     }
     
     // back knob
