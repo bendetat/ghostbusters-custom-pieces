@@ -4,8 +4,8 @@ use <knurledFinishLib_v2.scad>
 
 knurl_help();
 
-wand_box_top_knob();
-//wand_box_front_knob();
+//wand_box_top_knob();
+wand_box_front_knob();
 
 module wand_box_front_knob() {
     difference() {

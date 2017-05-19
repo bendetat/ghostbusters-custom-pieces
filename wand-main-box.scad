@@ -6,9 +6,66 @@ ledHoleDiameter = 6.5;
 switchHoleDiameter = 6.5;
 screwHole = 3.0;
 
-wand_main_box();
+the_lot();
+
+//wand_main_box();
 //front_part();
 //back_part();
+//front_box();
+//front_cylinder();
+//back_cylinder();
+
+module the_lot() {
+    wand_main_box();
+    translate([0,-20,23])
+    front_box();
+    translate([0,-20,0])
+    front_cylinder();
+    translate([20,175,20])
+    rotate([90,0,0])
+    back_cylinder();
+}
+
+module back_cylinder() {
+    cylinder(d=30,h=50);
+}
+
+module front_cylinder() {
+    difference() {
+        translate([65,20,12])
+        rotate([90,0,0])
+        cylinder(d=30,h=50);
+        translate([0,-1,22])
+        cube([100,22,22]);
+        translate([0,3,-9])
+        cube([100,18,10]);
+        translate([65,-20,12])
+        rotate([90,0,0])
+        cylinder(d=5,h=11);
+    }
+}
+
+module front_box() {
+    difference() {
+        cube([100,20,22]);
+        // tube fitting
+        translate([90,10,10])
+        cylinder(d=5,h=25);
+        // led
+        translate([70,10,20])
+        cylinder(d=ledHoleDiameter,h=11);
+        //screw holes
+        translate([65,35,11])
+        rotate([90,0,0])
+        cylinder(d=screwHole,h=40);
+        translate([10,35,11])
+        rotate([90,0,0])
+        cylinder(d=screwHole,h=40);
+        // shell for wiring
+        translate([15,wallThickness,wallThickness])
+        cube([63,100,22-wallThickness*2]);
+    }
+}
 
 module back_part() {
     translate([0,-85,0])
@@ -89,6 +146,16 @@ module wand_main_box() {
         // back led cutout
         translate([13,112,46])
         cylinder(d=ledHoleDiameter,h=6);
+        
+        // screw cutouts for front box
+        translate([0,0,23]) {
+            translate([65,35,11])
+            rotate([90,0,0])
+            cylinder(d=screwHole,h=40);
+            translate([10,35,11])
+            rotate([90,0,0])
+            cylinder(d=screwHole,h=40);
+        }
     }
 }
 
