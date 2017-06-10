@@ -2,7 +2,7 @@ $fn=100;
 
 // http://www.gbfans.com/wiki/File:Sean%27s_Proton_Gun_Plans_Page_9.jpg
 
-function inches(mm) = mm * 25.4;
+function inches(in) = in * 25.4;
 
 //left_block();
 right_block();
