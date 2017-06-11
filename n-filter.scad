@@ -1,5 +1,7 @@
 $fn=100;
 
+wall_thickness = 3;
+
 nfilter();
 //cap();
 
@@ -7,7 +9,7 @@ module cap() {
     cylinder(d=70,h=3);
     translate([0,0,3])
     difference() {
-        cylinder(d=64,h=3);
+        cylinder(d=70-wall_thickness*2,h=3);
         translate([0,0,-0.1]) cylinder(d=60,h=3.2);
     }
 }
@@ -19,7 +21,7 @@ module nfilter() {
         translate([120,0,0])
         difference() {
             cylinder(d=70,h=100);
-            translate([0,0,-0.1]) cylinder(d=64,h=101);
+            translate([0,0,-0.1]) cylinder(d=70-wall_thickness*2,h=101);
             for (i=[0:8]) {
                 translate([0,0,85])
                 rotate([90,0,360/9*i])
